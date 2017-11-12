@@ -1,8 +1,9 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
+const config = require('./config.json');
 
 try {
-    const data = yaml.safeLoad(fs.readFileSync('./holidays.yml', 'utf8'));
+    const data = yaml.safeLoad(fs.readFileSync(config.input, 'utf8'));
 
     const result = Object.keys(data).map(function(key) {
         const d = new Date(key);
@@ -17,7 +18,7 @@ try {
         dates: result
     }
 
-    fs.writeFile('holidays.json', JSON.stringify(output, null, '  '));
+    fs.writeFile(config.output, JSON.stringify(output, null, '  '));
 } catch(e) {
     console.log(e);
 }
