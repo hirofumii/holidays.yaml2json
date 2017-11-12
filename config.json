@@ -1,0 +1,4 @@
+{
+    "input": "./holidays.yml",
+    "output": "./holidays.json"
+}
